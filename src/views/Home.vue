@@ -1,5 +1,6 @@
 <template>
   <div class="home">
+    <b>{{ food  }}</b>
     <!-- <img alt="Vue logo" src="../assets/logo.png">
     <HelloWorld msg="Welcome to Your Vue.js App" /> -->
     <button @click="handleClick('back')">返回上一页</button>
@@ -17,6 +18,13 @@ export default {
   components: {
     HelloWorld
   },
+  props: {
+    food: {
+      type: String,
+      default: 'apple'
+    }
+  }
+  ,
   methods: {
     handleClick(type) {
       if (type === "back") this.$router.go(-1);
