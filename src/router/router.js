@@ -3,6 +3,7 @@ import Home from '@/views/Home.vue'
 export default [
   {
     path: '/',
+    alias: '/home_page',
     name: 'home',
     component: Home
   },
@@ -36,5 +37,9 @@ export default [
       email: () => import('@/views/email.vue'),
       tel: () => import('@/views/tel.vue')
     }
+  },
+  {
+    path: '/main',
+    redirect: to => '/'
   }
 ]
