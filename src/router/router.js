@@ -11,6 +11,11 @@ export default [
     })
   },
   {
+    path: '/login',
+    name: 'login',
+    component: () => import('@/views/login.vue')
+  },
+  {
     path: '/about',
     name: 'about',
     // route level code-splitting
