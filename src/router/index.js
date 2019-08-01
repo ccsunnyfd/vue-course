@@ -25,4 +25,8 @@ router.beforeEach((to, from, next) => {
   }
 })
 
+router.afterEach((to, from) => {
+  // logining = false
+})
+
 export default router
