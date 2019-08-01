@@ -25,6 +25,16 @@ router.beforeEach((to, from, next) => {
   }
 })
 
+// router.beforeResolve((to, from, next) => {
+//   if (to.name !== 'login') {
+//     if (HAS_LOGEDIN) next()
+//     else next({ name: 'login' })
+//   } else {
+//     if (HAS_LOGEDIN) next({ name: 'home' })
+//     else next()
+//   }
+// })
+
 router.afterEach((to, from) => {
   // logining = false
 })
