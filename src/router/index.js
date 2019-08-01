@@ -39,4 +39,18 @@ router.afterEach((to, from) => {
   // logining = false
 })
 
+// The Full Navigation Resolution Flow
+// Navigation triggered.
+// Call leave guards in deactivated components.
+// Call global beforeEach guards.
+// Call beforeRouteUpdate guards in reused components.
+// Call beforeEnter in route configs.
+// Resolve async route components.
+// Call beforeRouteEnter in activated components.
+// Call global beforeResolve guards.
+// Navigation confirmed.
+// Call global afterEach hooks.
+// DOM updates triggered.
+// Call callbacks passed to next in beforeRouteEnter guards with instantiated instances.
+
 export default router
