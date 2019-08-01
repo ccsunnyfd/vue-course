@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import routes from './router'
+import { setTitle } from '@/lib/util'
 
 Vue.use(Router)
 
@@ -16,6 +17,7 @@ const router = new Router({
 const HAS_LOGEDIN = true
 
 router.beforeEach((to, from, next) => {
+  to.meta && setTitle(to.meta.title)
   if (to.name !== 'login') {
     if (HAS_LOGEDIN) next()
     else next({ name: 'login' })
