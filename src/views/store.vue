@@ -5,8 +5,8 @@
     <a-input @input="handleInput" />
     <!-- <p>{{  inputValue  }}</p> -->
     <a-show :content="inputValue" />
-    <p>appName: {{ appName }}, appNameWithVersion: {{ appNameWithVersion }}</p>
-    <!-- <p>userName: {{ userName }}</p> -->
+    <!-- <p>appName: {{ appName }}, appNameWithVersion: {{ appNameWithVersion }}</p> -->
+    <p>userName: {{ userName }}, firstLetter is : {{ firstLetter }}</p>
   </div>
 </template>
 <script>
@@ -35,12 +35,10 @@ export default {
     ...mapState("user", {
       userName: state => state.userName
     }),
-    ...mapGetters([
-      'appNameWithVersion'
-    ]),
+    ...mapGetters("user", ["firstLetter"]),
     appName() {
       return this.$store.state.appName;
-    },
+    }
     // userName() {
     //   return this.$store.state.user.userName;
     // }
