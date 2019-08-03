@@ -63,7 +63,8 @@ export default {
       this.inputValue = val;
     },
     handleChangeAppName() {
-      this.$store.commit("SET_APP_NAME", {
+      this.$store.commit({
+        type: "SET_APP_NAME",
         appName: "newAppName"
       });
     }
