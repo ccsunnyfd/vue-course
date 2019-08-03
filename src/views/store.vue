@@ -6,6 +6,7 @@
     <!-- <p>{{  inputValue  }}</p> -->
     <a-show :content="inputValue" />
     <p>{{ appName }}</p>
+    <p>{{ userName }}</p>
   </div>
 </template>
 <script>
@@ -26,6 +27,9 @@ export default {
   computed: {
     appName() {
       return this.$store.state.appName;
+    },
+    userName() {
+      return this.$store.state.user.userName;
     }
   },
   methods: {
