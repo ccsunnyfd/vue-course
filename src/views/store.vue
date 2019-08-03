@@ -13,8 +13,8 @@
 import AInput from "_c/AInput.vue";
 import AShow from "_c/AShow.vue";
 
-import { createNamespacedHelpers } from "vuex";
-const { mapState } = createNamespacedHelpers("user");
+import { mapState } from "vuex";
+// const { mapState } = createNamespacedHelpers("user");
 
 export default {
   name: "store",
@@ -32,7 +32,7 @@ export default {
     //   appName: state => state.appName,
     //   userName: state => state.user.userName
     // })
-    ...mapState({
+    ...mapState("user", {
       userName: state => state.userName
     })
     // appName() {
