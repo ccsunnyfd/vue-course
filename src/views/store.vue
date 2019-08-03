@@ -15,7 +15,7 @@
 import AInput from "_c/AInput.vue";
 import AShow from "_c/AShow.vue";
 
-import { mapState, mapGetters } from "vuex";
+import { mapState, mapGetters, mapMutations } from "vuex";
 // const { mapState } = createNamespacedHelpers("user");
 
 export default {
@@ -60,6 +60,7 @@ export default {
     }
   },
   methods: {
+    ...mapMutations(["SET_APP_NAME"]),
     // handleInput(val) {
     //   this.inputValue = val;
     // }
@@ -67,8 +68,11 @@ export default {
       this.inputValue = val;
     },
     handleChangeAppName() {
-      this.$store.commit({
-        type: "SET_APP_NAME",
+      // this.$store.commit({
+      //   type: "SET_APP_NAME",
+      //   appName: "newAppName"
+      // });
+      this.SET_APP_NAME({
         appName: "newAppName"
       });
       this.$store.commit("SET_APP_VERSION");
