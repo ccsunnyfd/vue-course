@@ -8,6 +8,7 @@
     <p>appName: {{ appName }}, appNameWithVersion: {{ appNameWithVersion }}</p>
     <!-- <p>userName: {{ userName }}, firstLetter is : {{ firstLetter }}</p> -->
     <button @click="handleChangeAppName">修改appName</button>
+    <p>{{ appVersion }}</p>
   </div>
 </template>
 <script>
@@ -33,8 +34,11 @@ export default {
     //   appName: state => state.appName,
     //   userName: state => state.user.userName
     // })
-    ...mapState("user", {
-      userName: state => state.userName
+    // ...mapState("user", {
+    //   userName: state => state.userName,
+    // }),
+    ...mapState({
+      appVersion: state => state.appVersion
     }),
     ...mapGetters("user", ["firstLetter"]),
     appName() {
@@ -67,6 +71,7 @@ export default {
         type: "SET_APP_NAME",
         appName: "newAppName"
       });
+      this.$store.commit("SET_APP_VERSION");
     }
   }
 };
