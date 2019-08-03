@@ -13,7 +13,7 @@
 import AInput from "_c/AInput.vue";
 import AShow from "_c/AShow.vue";
 
-import { mapState } from 'vuex'
+import { mapState } from "vuex";
 
 export default {
   name: "store",
@@ -27,9 +27,9 @@ export default {
     AShow
   },
   computed: {
-    ...mapState ([
-      'appName'
-    ])
+    ...mapState({
+      appName: state => state.appName
+    })
     // appName() {
     //   return this.$store.state.appName;
     // },
