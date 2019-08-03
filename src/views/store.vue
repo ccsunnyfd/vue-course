@@ -81,7 +81,8 @@ export default {
       this.updateAppName();
     },
     changeUserName() {
-      this.SET_USER_NAME("newUserName");
+      // this.SET_USER_NAME("newUserName");
+      this.$store.dispatch('updateAppName', '123')
     }
   }
 };
