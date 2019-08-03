@@ -51,8 +51,8 @@ export default {
     // userName() {
     //   return this.$store.state.user.userName;
     // }
-    appNameWithVersion () {
-      return this.$store.getters.appNameWithVersion
+    appNameWithVersion() {
+      return this.$store.getters.appNameWithVersion;
     }
   },
   methods: {
@@ -63,7 +63,9 @@ export default {
       this.inputValue = val;
     },
     handleChangeAppName() {
-      this.$store.commit("SET_APP_NAME", "newAppName");
+      this.$store.commit("SET_APP_NAME", {
+        appName: "newAppName"
+      });
     }
   }
 };
