@@ -6,9 +6,10 @@
     <!-- <p>{{  inputValue  }}</p> -->
     <a-show :content="inputValue" />
     <p>appName: {{ appName }}, appNameWithVersion: {{ appNameWithVersion }}</p>
-    <!-- <p>userName: {{ userName }}, firstLetter is : {{ firstLetter }}</p> -->
+    <p>userName: {{ userName }}, firstLetter is : {{ firstLetter }}</p>
     <button @click="handleChangeAppName">修改appName</button>
     <p>{{ appVersion }}</p>
+    <button @click="changeUserName">修改用户名</button>
   </div>
 </template>
 <script>
@@ -34,9 +35,9 @@ export default {
     //   appName: state => state.appName,
     //   userName: state => state.user.userName
     // })
-    // ...mapState("user", {
-    //   userName: state => state.userName,
-    // }),
+    ...mapState("user", {
+      userName: state => state.userName
+    }),
     ...mapState({
       appVersion: state => state.appVersion
     }),
@@ -60,7 +61,7 @@ export default {
     }
   },
   methods: {
-    ...mapMutations(["SET_APP_NAME"]),
+    ...mapMutations("user", ["SET_APP_NAME", "SET_USER_NAME"]),
     // handleInput(val) {
     //   this.inputValue = val;
     // }
@@ -76,6 +77,9 @@ export default {
         appName: "newAppName"
       });
       this.$store.commit("SET_APP_VERSION");
+    },
+    changeUserName() {
+      this.SET_USER_NAME("newUserName");
     }
   }
 };
