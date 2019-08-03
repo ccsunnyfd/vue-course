@@ -5,8 +5,8 @@
     <a-input @input="handleInput" />
     <!-- <p>{{  inputValue  }}</p> -->
     <a-show :content="inputValue" />
-    <!-- <p>appName: {{ appName }}</p> -->
-    <p>userName: {{ userName }}</p>
+    <p>appName: {{ appName }}, appNameWithVersion: {{ appNameWithVersion }}</p>
+    <!-- <p>userName: {{ userName }}</p> -->
   </div>
 </template>
 <script>
@@ -34,13 +34,16 @@ export default {
     // })
     ...mapState("user", {
       userName: state => state.userName
-    })
-    // appName() {
-    //   return this.$store.state.appName;
-    // },
+    }),
+    appName() {
+      return this.$store.state.appName;
+    },
     // userName() {
     //   return this.$store.state.user.userName;
     // }
+    appNameWithVersion () {
+      return this.$store.getters.appNameWithVersion
+    }
   },
   methods: {
     // handleInput(val) {
