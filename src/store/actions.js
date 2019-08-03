@@ -4,7 +4,9 @@ const actions = {
   updateAppName({ commit }) {
     getAppName().then(res => {
       // console.log(res)
-      commit('SET_APP_NAME', res.info.appName)
+      // const { code, info: { appName } } = res
+      const { info: { appName } } = res
+      commit('SET_APP_NAME', appName)
     }).catch(err => {
       console.log(err)
     })
