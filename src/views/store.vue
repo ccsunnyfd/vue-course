@@ -5,6 +5,7 @@
     <a-input @input="handleInput" />
     <!-- <p>{{  inputValue  }}</p> -->
     <a-show :content="inputValue" />
+    <p>{{ appName }}</p>
   </div>
 </template>
 <script>
@@ -21,6 +22,11 @@ export default {
   components: {
     AInput,
     AShow
+  },
+  computed: {
+    appName() {
+      return this.$store.state.appName;
+    }
   },
   methods: {
     // handleInput(val) {
