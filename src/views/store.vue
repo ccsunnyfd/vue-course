@@ -5,8 +5,9 @@
     <a-input @input="handleInput" />
     <!-- <p>{{  inputValue  }}</p> -->
     <a-show :content="inputValue" />
-    <!-- <p>appName: {{ appName }}, appNameWithVersion: {{ appNameWithVersion }}</p> -->
-    <p>userName: {{ userName }}, firstLetter is : {{ firstLetter }}</p>
+    <p>appName: {{ appName }}, appNameWithVersion: {{ appNameWithVersion }}</p>
+    <!-- <p>userName: {{ userName }}, firstLetter is : {{ firstLetter }}</p> -->
+    <button @click="handleChangeAppName">修改appName</button>
   </div>
 </template>
 <script>
@@ -38,13 +39,21 @@ export default {
     ...mapGetters("user", ["firstLetter"]),
     appName() {
       return this.$store.state.appName;
-    }
+    },
+    // appName: {
+    //   set: function(newValue) {
+    //     this.inputValue = newValue + "sd";
+    //   },
+    //   get: function() {
+    //     return this.inputValue + "sdfsdf";
+    //   }
+    // }
     // userName() {
     //   return this.$store.state.user.userName;
     // }
-    // appNameWithVersion () {
-    //   return this.$store.getters.appNameWithVersion
-    // }
+    appNameWithVersion () {
+      return this.$store.getters.appNameWithVersion
+    }
   },
   methods: {
     // handleInput(val) {
@@ -52,6 +61,9 @@ export default {
     // }
     handleInput(val) {
       this.inputValue = val;
+    },
+    handleChangeAppName() {
+      this.$store.commit("SET_APP_NAME", "newAppName");
     }
   }
 };
