@@ -13,7 +13,7 @@
 import AInput from "_c/AInput.vue";
 import AShow from "_c/AShow.vue";
 
-import { mapState } from "vuex";
+import { mapState, mapGetters } from "vuex";
 // const { mapState } = createNamespacedHelpers("user");
 
 export default {
@@ -35,15 +35,18 @@ export default {
     ...mapState("user", {
       userName: state => state.userName
     }),
+    ...mapGetters([
+      'appNameWithVersion'
+    ]),
     appName() {
       return this.$store.state.appName;
     },
     // userName() {
     //   return this.$store.state.user.userName;
     // }
-    appNameWithVersion () {
-      return this.$store.getters.appNameWithVersion
-    }
+    // appNameWithVersion () {
+    //   return this.$store.getters.appNameWithVersion
+    // }
   },
   methods: {
     // handleInput(val) {
