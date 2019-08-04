@@ -26,7 +26,7 @@ export default {
   },
   beforeRouteEnter(to, from, next) {
     next(vm => {
-      console.log(vm);
+      // console.log(vm);
     });
   },
   beforeRouteLeave(to, from, next) {
