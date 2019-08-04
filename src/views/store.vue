@@ -1,9 +1,10 @@
 <template>
   <div>
     <!-- <a-input :value="inputValue" @input="handleInput" /> -->
-    <!-- <a-input v-model="inputValue" /> -->
-    <a-input @input="handleInput" />
+    <a-input :value="stateValue" @input='handleStateValueChange' />
+    <!-- <a-input @input="handleInput" /> -->
     <!-- <p>{{  inputValue  }}</p> -->
+    <p>{{  stateValue  }}</p>
     <a-show :content="inputValue" />
     <p>appName: {{ appName }}, appNameWithVersion: {{ appNameWithVersion }}</p>
     <p>userName: {{ userName }}, firstLetter is : {{ firstLetter }}</p>
@@ -39,7 +40,8 @@ export default {
       userName: state => state.userName
     }),
     ...mapState({
-      appVersion: state => state.appVersion
+      appVersion: state => state.appVersion,
+      stateValue: state => state.stateValue
     }),
     ...mapGetters("user", ["firstLetter"]),
     appName() {
@@ -61,7 +63,11 @@ export default {
     }
   },
   methods: {
-    ...mapMutations("user", ["SET_APP_NAME", "SET_USER_NAME"]),
+    ...mapMutations([
+      "SET_APP_NAME",
+      "SET_USER_NAME",
+      "SET_STATE_VALUE"
+    ]),
     // handleInput(val) {
     //   this.inputValue = val;
     // }
@@ -83,6 +89,9 @@ export default {
     changeUserName() {
       this.SET_USER_NAME("newUserName");
       // this.$store.dispatch('updateAppName', '123')
+    },
+    handleStateValueChange(val) {
+      this.SET_STATE_VALUE(val);
     }
   }
 };
