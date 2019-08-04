@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- <a-input :value="inputValue" @input="handleInput" /> -->
-    <a-input :value="stateValue" @input='handleStateValueChange' />
+    <a-input v-model="stateValue" />
     <!-- <a-input @input="handleInput" /> -->
     <!-- <p>{{  inputValue  }}</p> -->
     <p>{{  stateValue  }}</p>
@@ -40,9 +40,16 @@ export default {
       userName: state => state.userName
     }),
     ...mapState({
-      appVersion: state => state.appVersion,
-      stateValue: state => state.stateValue
+      appVersion: state => state.appVersion
     }),
+    stateValue: {
+      get() {
+        return this.$store.state.stateValue;
+      },
+      set(value) {
+        this.SET_STATE_VALUE(value);
+      }
+    },
     ...mapGetters("user", ["firstLetter"]),
     appName() {
       return this.$store.state.appName;
@@ -63,11 +70,7 @@ export default {
     }
   },
   methods: {
-    ...mapMutations([
-      "SET_APP_NAME",
-      "SET_USER_NAME",
-      "SET_STATE_VALUE"
-    ]),
+    ...mapMutations(["SET_APP_NAME", "SET_USER_NAME", "SET_STATE_VALUE"]),
     // handleInput(val) {
     //   this.inputValue = val;
     // }
