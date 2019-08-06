@@ -60,7 +60,7 @@ export default {
       getUserInfo({
         userId: 21
       }).then(res => {
-        console.log("res: ", res);
+        console.log("res: ", res.data);
       });
     }
   }
