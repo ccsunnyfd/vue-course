@@ -15,25 +15,32 @@ class HttpRequest {
     }
     return config
   }
-  interceptors (instance) {
+  interceptors (instance, url) {
     instance.interceptors.request.use(config => {
       // 添加全局的loading...
       // Spin.show()
+      if (!Object.keys(this.queue).length) {
+        /*Spin.show()*/
+      }
+      this.queue[url] = true
       return config
     }, error => {
       return Promise.reject(error)
     })
     instance.interceptors.response.use(res => {
       // console.log(res)
-      return res
+      delete this.queue[url]
+      const { data, status } = res
+      return { data, status }
     }, error => {
+      delete this.queue[url]
       return Promise.reject(error)
     })
   }
   request (options) {
     const instance = axios.create()
     options = Object.assign(this.getInsideConfig(), options) // 合并选项值
-    this.interceptors(instance)
+    this.interceptors(instance, options.url)
     return instance(options)
   }
 }
