@@ -1,5 +1,7 @@
 import Mock from 'mockjs'
 
+const Random = Mock.Random
+
 export const getUserInfo = (options) => {
   const template = {
     'str|2-4': 'lison',
@@ -24,7 +26,9 @@ export const getUserInfo = (options) => {
     'func': () => {
       return 'this is created by function'
     },
-    'reg': /[1-9][a-z]/ // 反向生成一个可以匹配它的字符串
+    'reg': /[1-9][a-z]/, // 反向生成一个可以匹配它的字符串
+    email: Random.email(),
+    email2: Mock.mock('@email')
   }
   // let i = 3
   // let arr = []
