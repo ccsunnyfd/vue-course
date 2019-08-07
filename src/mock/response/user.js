@@ -51,7 +51,11 @@ export const getUserInfo = (options) => {
     shuffle: Random.shuffle([1, 2, 3, 4]),
     guid: Random.guid(),
     fruit: Random.fruit(),
-    fruit2: '@fruit'
+    fruit2: '@fruit',
+    valid: Mock.valid({
+      'user|1-3': [{ 'name': '@cname', 'id|18-28': 88 }]
+    }, { 'user': [{ 'name': '张三', 'id': 20 }] }),
+    toJSONSchema: Mock.toJSONSchema({ 'user|1-3': [{ 'name': '@cname', 'id|18-28': 88 }] })
   }
   // let i = 3
   // let arr = []
