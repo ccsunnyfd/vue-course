@@ -1,6 +1,7 @@
 <template>
   <div>
-    <slot name="left"></slot><span :class="countClass" :id="eleId"></span><slot name="right"></slot>
+    <slot name="left"></slot><span ref="number" :class="countClass" :id="eleId"></span>
+    <slot name="right"></slot>
   </div>
 </template>
 <script>
@@ -12,11 +13,8 @@ export default {
     eleId() {
       return `count_up_${this._uid}`;
     },
-    countClass () {
-      return [
-        'count-to-number',
-        this.className
-      ]
+    countClass() {
+      return ["count-to-number", this.className];
     }
   },
   data() {
@@ -90,7 +88,12 @@ export default {
     },
     className: {
       type: String,
-      default: ''
+      default: ""
+    }
+  },
+  methods: {
+    getCount() {
+      return this.$refs.number.innerText
     }
   },
   mounted() {
@@ -116,6 +119,6 @@ export default {
 };
 </script>
 <style lang="less">
-@import './count-to.less';
+@import "./count-to.less";
 </style>
 
