@@ -28,7 +28,28 @@ export const getUserInfo = (options) => {
     },
     'reg': /[1-9][a-z]/, // 反向生成一个可以匹配它的字符串
     email: Random.email(),
-    email2: Mock.mock('@email')
+    email2: Mock.mock('@email'),
+    range: Random.range(3, 6, 1), // [3, 4, 5]
+    date: Random.date('yyyy-MM-dd'),
+    time: Random.time('hh:mm'),
+    datetime: Random.datetime('yyyy-MM-dd hh:mm'),
+    now: Random.now('hour', 'yyyy-MM-dd a hh:mm'),
+    // img: Random.image()
+    img: Random.image('100x200', '#00ff00', '#ffffff', 'png', 'Lison'),
+    img_base64: Random.dataImage(),
+    color: Random.color(),
+    cword: Random.cword('婉儿螺丝刀', 2, 5),
+    cname: Random.cname(),
+    email3: Random.email('lison.com'),
+    region: Random.region(),
+    province: Random.province(),
+    city: Random.city(true),
+    county: Random.county(true),
+    zip: Random.zip(),
+    upperFirstLetter: Random.capitalize('lison'),
+    pick: Random.pick([1, 2, 3, 4]),
+    shuffle: Random.shuffle([1, 2, 3, 4]),
+    guid: Random.guid()
   }
   // let i = 3
   // let arr = []
