@@ -49,7 +49,9 @@ export const getUserInfo = (options) => {
     upperFirstLetter: Random.capitalize('lison'),
     pick: Random.pick([1, 2, 3, 4]),
     shuffle: Random.shuffle([1, 2, 3, 4]),
-    guid: Random.guid()
+    guid: Random.guid(),
+    fruit: Random.fruit(),
+    fruit2: '@fruit'
   }
   // let i = 3
   // let arr = []
