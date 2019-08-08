@@ -1,6 +1,6 @@
 <template>
   <div class="split-pane-con">
-    <split-pane></split-pane>
+    <split-pane :value="offset" @input="handleInput"></split-pane>
   </div>
 </template>
 <script>
@@ -8,6 +8,16 @@ import SplitPane from '_c/split-pane'
 export default {
   components: {
     SplitPane
+  },
+  data () {
+    return {
+      offset: 0.8
+    }
+  },
+  methods: {
+    handleInput (value) {
+      this.offset = value
+    }
   }
 };
 </script>
