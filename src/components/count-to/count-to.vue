@@ -96,6 +96,11 @@ export default {
       return this.$refs.number.innerText
     }
   },
+  watch: {
+    endVal (newVal, oldVal) {
+      this.counter.update(newVal)
+    }
+  },
   mounted() {
     this.$nextTick(() => {
       this.counter = new CountUp(
