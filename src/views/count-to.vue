@@ -1,6 +1,6 @@
 <template>
   <div>
-    <count-to ref="countTo" :end-val="endVal">
+    <count-to ref="countTo" :end-val="endVal" @on-animation-end="handleEnd">
       <span slot="left">总金额：</span>
       <span slot="right">元</span>
     </count-to>
@@ -26,6 +26,9 @@ export default {
     },
     up () {
       this.endVal += Math.random() * 100
+    },
+    handleEnd (endVal) {
+      console.log('end -> ' + endVal)
     }
   }
 };

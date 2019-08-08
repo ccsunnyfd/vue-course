@@ -93,12 +93,20 @@ export default {
   },
   methods: {
     getCount() {
-      return this.$refs.number.innerText
+      return this.$refs.number.innerText;
+    },
+    emitEndEvent() {
+      setTimeout(() => {
+        this.$nextTick(() => {
+          this.$emit("on-animation-end", Number(this.getCount()));
+        });
+      }, this.duration * 1000 + 5);
     }
   },
   watch: {
-    endVal (newVal, oldVal) {
-      this.counter.update(newVal)
+    endVal(newVal, oldVal) {
+      this.counter.update(newVal);
+      this.emitEndEvent();
     }
   },
   mounted() {
@@ -118,6 +126,7 @@ export default {
       );
       setTimeout(() => {
         this.counter.start();
+        this.emitEndEvent();
       }, this.delay);
     });
   }
