@@ -70,7 +70,8 @@ export default {
       if (offsetPercent > this.max) {
         offsetPercent = this.max;
       }
-      this.$emit("input", offsetPercent);
+      // this.$emit("input", offsetPercent);
+      this.$emit("update:value", offsetPercent);
     }
   }
 };

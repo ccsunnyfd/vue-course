@@ -1,6 +1,6 @@
 <template>
   <div class="split-pane-con">
-    <split-pane v-model="offset"></split-pane>
+    <split-pane :value.sync="offset"></split-pane>
   </div>
 </template>
 <script>
