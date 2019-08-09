@@ -15,10 +15,11 @@ const handleClick = event => {
 
 let list = [{ name: 'lison' }, { name: 'lili' }]
 const getLiEleArr = (h) => {
-  return list.map(item => h('li', {
+  return list.map((item, index) => h('li', {
     on: {
       'click': handleClick
-    }
+    },
+    key: `list_item_${index}`
   }, item.name))
 }
 
