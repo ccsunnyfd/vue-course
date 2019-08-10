@@ -5,21 +5,21 @@
 </template>
 <script>
 import List from "_c/list";
+import CountTo from '_c/count-to'
 export default {
   data() {
     return {
-      list: [{ name: "lison" }, { name: "lili" }]
+      list: [{ number: 100 }, { number: 45 }]
     };
   },
   components: {
     List
   },
   methods: {
-    renderFunc(h, name) {
+    renderFunc(h, number) {
       return (
-        <i on-click={this.handleClick} style={{ color: "pink" }}>
-          {name}
-        </i>
+        <CountTo endVal={number} style={{ color: "pink" }}>
+        </CountTo>
       );
     },
     handleClick(event) {
