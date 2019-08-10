@@ -1,21 +1,18 @@
 <template>
   <div>
-    <ul @click="handleClick">
-      <li @click.stop="handleClick" v-for="(item, index) in list" :key="`list_item_${index}`">{{ item.name }}</li>
-    </ul>
+    <list :list="list"></list>
   </div>
 </template>
 <script>
+import List from "_c/list";
 export default {
   data() {
     return {
       list: [{ name: "lison" }, { name: "lili" }]
     };
   },
-  methods: {
-    handleClick(event) {
-      console.log(event);
-    }
+  components: {
+    List
   }
 };
 </script>
