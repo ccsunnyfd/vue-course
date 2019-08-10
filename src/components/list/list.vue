@@ -1,6 +1,6 @@
 <template>
   <ul>
-    <li @mousemove.prevent="handleMove" v-for="(item, index) in list" :key="`item_${index}`">
+    <li @mousemove="handleMove" v-for="(item, index) in list" :key="`item_${index}`">
       <span v-if="!render">{{ item.number  }}</span>
       <render-dom v-else :render-func="render" :number="item.number"></render-dom>
     </li>
@@ -24,8 +24,8 @@ export default {
     }
   },
   methods: {
-    handleMove (event) {
-      //
+    handleMove(event) {
+      event.preventDefault();
     }
   }
 };
