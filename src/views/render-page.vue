@@ -15,10 +15,15 @@ export default {
     List
   },
   methods: {
-    renderFunc (h, name) {
+    renderFunc(h, name) {
       return (
-        <i style={{color: 'pink'}}>{name}</i>
-      )
+        <i on-click={this.handleClick} style={{ color: "pink" }}>
+          {name}
+        </i>
+      );
+    },
+    handleClick(event) {
+      console.log(event);
     }
   }
 };
