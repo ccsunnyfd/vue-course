@@ -23,10 +23,10 @@ export default {
       );
     },
     handleClick(event) {
-      console.log(event);
+      // console.log(event);
     },
     handleEnd () {
-      console.log('end!')
+      // console.log('end!')
     }
   }
 };
