@@ -1,6 +1,6 @@
 <template>
   <div>
-    <list :list="list" :render="renderFunc"></list>
+    <list :list="list" :style="{color: 'red'}" :render="renderFunc"></list>
   </div>
 </template>
 <script>
@@ -16,11 +16,9 @@ export default {
   },
   methods: {
     renderFunc (h, name) {
-      return h('i', {
-        style: {
-          color: 'pink'
-        }
-      }, name)
+      return (
+        <i style={{color: 'pink'}}>{name}</i>
+      )
     }
   }
 };
