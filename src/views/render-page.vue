@@ -18,12 +18,15 @@ export default {
   methods: {
     renderFunc(h, number) {
       return (
-        <CountTo endVal={number} style={{ color: "pink" }}>
+        <CountTo on-on-animation-end={this.handleEnd} endVal={number} style={{ color: "pink" }}>
         </CountTo>
       );
     },
     handleClick(event) {
       console.log(event);
+    },
+    handleEnd () {
+      console.log('end!')
     }
   }
 };
