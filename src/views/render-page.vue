@@ -1,11 +1,13 @@
 <template>
   <div>
-    <list :list="list" :style="{color: 'red'}" :render="renderFunc"></list>
+    <list :list="list" :style="{color: 'red'}">
+      <count-to slot-scope="count" :end-val="count.number"></count-to>
+    </list>
   </div>
 </template>
 <script>
 import List from "_c/list";
-import CountTo from '_c/count-to'
+import CountTo from "_c/count-to";
 export default {
   data() {
     return {
@@ -13,19 +15,24 @@ export default {
     };
   },
   components: {
-    List
+    List,
+    CountTo
   },
   methods: {
     renderFunc(h, number) {
       return (
-        <CountTo nativeOn-click={this.handleClick} on-on-animation-end={this.handleEnd} endVal={number} style={{ color: "pink" }}>
-        </CountTo>
+        <CountTo
+          nativeOn-click={this.handleClick}
+          on-on-animation-end={this.handleEnd}
+          endVal={number}
+          style={{ color: "pink" }}
+        ></CountTo>
       );
     },
     handleClick(event) {
       // console.log(event);
     },
-    handleEnd () {
+    handleEnd() {
       // console.log('end!')
     }
   }
