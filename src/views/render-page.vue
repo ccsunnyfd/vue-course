@@ -1,6 +1,6 @@
 <template>
   <div>
-    <list :list="list"></list>
+    <list :list="list" :render="renderFunc"></list>
   </div>
 </template>
 <script>
@@ -13,6 +13,15 @@ export default {
   },
   components: {
     List
+  },
+  methods: {
+    renderFunc (h, name) {
+      return h('i', {
+        style: {
+          color: 'pink'
+        }
+      }, name)
+    }
   }
 };
 </script>
