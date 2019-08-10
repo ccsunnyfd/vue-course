@@ -18,7 +18,7 @@ export default {
   methods: {
     renderFunc(h, number) {
       return (
-        <CountTo on-on-animation-end={this.handleEnd} endVal={number} style={{ color: "pink" }}>
+        <CountTo nativeOn-click={this.handleClick} on-on-animation-end={this.handleEnd} endVal={number} style={{ color: "pink" }}>
         </CountTo>
       );
     },
