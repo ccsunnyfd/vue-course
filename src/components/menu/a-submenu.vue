@@ -27,8 +27,8 @@ export default {
 </script>
 <style lang="less">
 .a-submenu {
+  background: rgb(33, 35, 39);
   &-title {
-    background: rgb(33, 35, 39);
     color: #fff;
     position: relative;
     .shrink-icon {
@@ -39,6 +39,10 @@ export default {
   }
   &-child-box {
     overflow: hidden;
+    padding-left: 20px;
+  }
+  li {
+    background: rgb(33, 35, 39);
   }
 }
 </style>
