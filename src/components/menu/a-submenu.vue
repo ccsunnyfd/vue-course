@@ -1,7 +1,12 @@
 <template>
-  <ul>
-    <slot name="title"></slot>
-    <slot></slot>
+  <ul class="a-submenu">
+    <div class="a-submenu-title" @click="handleClick">
+      <slot name="title"></slot>
+      <span class="shrink-icon" :style="{ transform: `rotateZ(${showChild ? 0: 180}deg)` }">^</span>
+    </div>
+    <div v-show="showChild" class="a-submenu-child-box">
+      <slot></slot>
+    </div>
   </ul>
 </template>
 
@@ -9,9 +14,31 @@
 export default {
   name: "ASubmenu",
   data() {
-    return {};
+    return {
+      showChild: false
+    };
+  },
+  methods: {
+    handleClick() {
+      this.showChild = !this.showChild;
+    }
   }
 };
 </script>
-<style>
+<style lang="less">
+.a-submenu {
+  &-title {
+    background: rgb(33, 35, 39);
+    color: #fff;
+    position: relative;
+    .shrink-icon {
+      position: absolute;
+      top: 4px;
+      right: 10px;
+    }
+  }
+  &-child-box {
+    overflow: hidden;
+  }
+}
 </style>

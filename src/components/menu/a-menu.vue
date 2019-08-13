@@ -15,6 +15,12 @@ export default {
 </script>
 <style lang="less">
 .a-menu {
-  list-style: none;
+  & *{
+    list-style: none;
+  }
+  ul{
+    padding: 0;
+    margin: 0;
+  }
 }
 </style>

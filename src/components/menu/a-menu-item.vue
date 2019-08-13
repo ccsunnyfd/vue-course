@@ -1,5 +1,5 @@
 <template>
-  <li>
+  <li class="a-menu-item">
     <slot></slot>
   </li>
 </template>
@@ -13,6 +13,10 @@ export default {
   }
 }
 </script>
-<style>
+<style lang="less">
+.a-menu-item {
+  background: rgb(90, 92, 104);
+  color: #fff;
+}
 
 </style>
