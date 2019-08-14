@@ -1,4 +1,4 @@
-import { login } from '@/api/user'
+import { login, authorization } from '@/api/user'
 import { setToken } from '@/lib/util'
 
 const state = {
@@ -23,6 +23,19 @@ const actions = {
           resolve()
         } else {
           reject(new Error('错误'))
+        }
+      }).catch(error => {
+        reject(error)
+      })
+    })
+  },
+  authorization ({ commit }, token) {
+    return new Promise((resolve, reject) => {
+      authorization().then(res => {
+        if (parseInt(res.code) === 401) {
+          reject(new Error('token error'))
+        } else {
+          resolve()
         }
       }).catch(error => {
         reject(error)
