@@ -9,6 +9,7 @@
     <button @click="getInfo" :style="{ background: bgColor }">请求数据</button>
     <br />
     <img :src="url">
+    <button @click="handleLogout">退出登录</button>
   </div>
 </template>
 
@@ -16,6 +17,7 @@
 // @ is an alias to /src
 import HelloWorld from "@/components/HelloWorld.vue";
 import { getUserInfo } from "@/api/user";
+import { mapActions } from 'vuex';
 
 export default {
   name: "home",
@@ -45,6 +47,9 @@ export default {
     else next(false);
   },
   methods: {
+    ...mapActions([
+      'logout'
+    ]),
     handleClick(type) {
       if (type === "back") this.$router.go(-1);
       else if (type === "push") {
@@ -72,6 +77,12 @@ export default {
         this.url = res.data.img;
         this.bgColor = res.data.color;
       });
+    },
+    handleLogout() {
+      this.logout()
+      this.$router.push({
+        name: 'login'
+      })
     }
   }
 };

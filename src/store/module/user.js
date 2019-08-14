@@ -42,6 +42,9 @@ const actions = {
         reject(error)
       })
     })
+  },
+  logout () {
+    setToken('')
   }
 }
 
