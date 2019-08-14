@@ -11,7 +11,7 @@ const actions = {
   //     console.log(err)
   //   })
   // }
-  async updateAppName({ commit }) {
+  async updateAppName ({ commit }) {
     try {
       const { info: { appName } } = await getAppName()
       commit('SET_APP_NAME', appName)

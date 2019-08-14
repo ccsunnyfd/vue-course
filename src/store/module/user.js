@@ -1,3 +1,5 @@
+import { login } from '@/api/user'
+
 const state = {
   userName: 'Lison'
 }
@@ -7,16 +9,22 @@ const getters = {
   }
 }
 const mutations = {
-  SET_USER_NAME(state, params) {
+  SET_USER_NAME (state, params) {
     state.userName = params
   }
 }
 const actions = {
-  //
+  login ({ commit }, { userName, password }) {
+    login({ userName, password }).then(res => {
+      console.log(res)
+    }).catch(error => {
+      console.log(error)
+    })
+  }
 }
 
 export default {
-  namespaced: true,
+  // namespaced: true,
   getters,
   state,
   mutations,

@@ -20,7 +20,7 @@ class HttpRequest {
       // 添加全局的loading...
       // Spin.show()
       if (!Object.keys(this.queue).length) {
-        /*Spin.show()*/
+        /* Spin.show() */
       }
       this.queue[url] = true
       return config
@@ -30,8 +30,8 @@ class HttpRequest {
     instance.interceptors.response.use(res => {
       // console.log(res)
       delete this.queue[url]
-      const { data, status } = res
-      return { data, status }
+      const { data } = res
+      return data
     }, error => {
       delete this.queue[url]
       return Promise.reject(error)
