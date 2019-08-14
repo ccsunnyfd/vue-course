@@ -14,7 +14,7 @@ const router = new Router({
   routes
 })
 
-const HAS_LOGEDIN = true
+const HAS_LOGEDIN = false
 
 router.beforeEach((to, from, next) => {
   to.meta && setTitle(to.meta.title)
