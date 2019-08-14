@@ -35,6 +35,7 @@ const actions = {
         if (parseInt(res.code) === 401) {
           reject(new Error('token error'))
         } else {
+          setToken(res.data.token) // 更新过期时间，续命
           resolve()
         }
       }).catch(error => {
