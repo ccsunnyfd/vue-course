@@ -15,33 +15,33 @@ const router = new Router({
   routes
 })
 
-const HAS_LOGEDIN = false
+const HAS_LOGEDIN = true
 
 router.beforeEach((to, from, next) => {
   to.meta && setTitle(to.meta.title)
-  // if (to.name !== 'login') {
-  //   if (HAS_LOGEDIN) next()
-  //   else next({ name: 'login' })
-  // } else {
-  //   if (HAS_LOGEDIN) next({ name: 'home' })
-  //   else next()
-  // }
-  const token = getToken()
-  if (token) {
-    store.dispatch('authorization', token).then(() => {
-      if (to.name === 'login') {
-        next({ name: 'home' })
-      } else next()
-    }).catch(() => {
-      setToken('')
-      next({ name: 'login' })
-    })
+  if (to.name !== 'login') {
+    if (HAS_LOGEDIN) next()
+    else next({ name: 'login' })
   } else {
-    if (to.name === 'login') next()
-    else {
-      next({ name: 'login' })
-    }
+    if (HAS_LOGEDIN) next({ name: 'home' })
+    else next()
   }
+  // const token = getToken()
+  // if (token) {
+  //   store.dispatch('authorization', token).then(() => {
+  //     if (to.name === 'login') {
+  //       next({ name: 'home' })
+  //     } else next()
+  //   }).catch(() => {
+  //     setToken('')
+  //     next({ name: 'login' })
+  //   })
+  // } else {
+  //   if (to.name === 'login') next()
+  //   else {
+  //     next({ name: 'login' })
+  //   }
+  // }
 })
 
 // router.beforeResolve((to, from, next) => {
