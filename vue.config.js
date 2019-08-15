@@ -15,7 +15,7 @@ module.exports = {
   // 打包时不生成.map文件
   productionSourceMap: false,
   devServer: {
-    proxy: 'http://localhost:3000'
+    // proxy: 'http://localhost:3000'
   }
 //  server side code:
 //   app.all('*', (req, res, next) => {

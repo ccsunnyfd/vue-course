@@ -1,12 +1,17 @@
-// import Home from '@/views/Home.vue'
+import Home from '@/views/Home.vue'
 import Layout from '@/views/layout.vue'
 
 export default [
   {
     path: '/',
-    alias: '/home_page',
     name: 'home',
-    component: Layout
+    component: Layout,
+    children: [
+      {
+        path: 'home',
+        component: Home
+      }
+    ]
   },
   {
     path: '/login',
