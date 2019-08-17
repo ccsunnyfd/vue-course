@@ -24,7 +24,7 @@ class HttpRequest {
         /* Spin.show() */
       }
       this.queue[url] = true
-      config.headers['Authorization'] = getToken()
+      // config.headers['Authorization'] = getToken()
       return config
     }, error => {
       return Promise.reject(error)

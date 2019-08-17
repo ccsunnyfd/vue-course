@@ -5,9 +5,9 @@
     <HelloWorld msg="Welcome to Your Vue.js App" />
     <button @click="handleClick('back')">返回上一页</button>
     <button @click="handleClick('push')">跳转到parent</button>
-    <button @click="handleClick('replace')">替换到parent</button>
-    <button @click="getInfo" :style="{ background: bgColor }">请求数据</button>
-    <br />
+    <button @click="handleClick('replace')">替换到parent</button> -->
+    <!-- <button @click="getInfo" :style="{ background: bgColor }">请求数据</button> -->
+    <!-- <br />
     <img :src="url">
     <button @click="handleLogout">退出登录</button> -->
     <Row>
@@ -84,9 +84,9 @@ export default {
       getUserInfo({
         userId: 21
       }).then(res => {
-        console.log("res: ", res.data);
-        this.url = res.data.img;
-        this.bgColor = res.data.color;
+        console.log("res: ", res);
+        this.url = res.img;
+        this.bgColor = res.color;
       });
     },
     handleLogout() {

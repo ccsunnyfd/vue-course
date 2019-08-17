@@ -14,6 +14,17 @@ export default [
     ]
   },
   {
+    path: '/',
+    name: 'table',
+    component: Layout,
+    children: [
+      {
+        path: 'table',
+        component: () => import('@/views/table.vue')
+      }
+    ]
+  },
+  {
     path: '/login',
     name: 'login',
     component: () => import('@/views/login.vue')
@@ -57,6 +68,11 @@ export default [
     path: '/split-pane',
     name: 'split_pane',
     component: () => import('@/views/split-pane.vue')
+  },
+  {
+    path: '/table',
+    name: 'table',
+    component: () => import('@/views/table.vue')
   },
   {
     path: '/parent',

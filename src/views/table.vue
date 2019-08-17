@@ -1,11 +1,15 @@
 <template>
-  <div></div>
+  <edit-table :columns="columns" :data="tableData"></edit-table>
 </template>
 
 <script>
 import { getTableData } from "@/api/data";
+import EditTable from '_c/edit-table'
 export default {
-  date() {
+  components: {
+    EditTable
+  },
+  data() {
     return {
       tableData: [],
       columns: [
