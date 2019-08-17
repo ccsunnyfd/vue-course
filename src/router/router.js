@@ -70,11 +70,6 @@ export default [
     component: () => import('@/views/split-pane.vue')
   },
   {
-    path: '/table',
-    name: 'table',
-    component: () => import('@/views/table.vue')
-  },
-  {
     path: '/parent',
     name: 'parent',
     component: () => import('@/views/parent.vue'),

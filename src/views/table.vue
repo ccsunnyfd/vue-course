@@ -1,5 +1,5 @@
 <template>
-  <edit-table :columns="columns" :data="tableData"></edit-table>
+  <edit-table :columns="columns" v-model="tableData" @on-edit="handleEdit"></edit-table>
 </template>
 
 <script>
@@ -18,6 +18,11 @@ export default {
         { key: "email", title: "邮箱", editable: true }
       ]
     };
+  },
+  methods: {
+    handleEdit ({ row, index, column, newValue }) {
+      console.log(row, index, column, newValue)
+    }
   },
   mounted() {
     getTableData().then(res => {
