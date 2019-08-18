@@ -5,12 +5,13 @@
 <script>
 import clonedeep from "clonedeep";
 export default {
-  name: "EditTable",
+  name: "EditTableMul",
   data() {
     return {
+      insideData: [],
       insideColumns: [],
-      edittingId: "",
-      edittingContent: ""
+      edittingIdArr: [],
+      edittingContent: [[]]
     };
   },
   props: {
@@ -26,41 +27,52 @@ export default {
   watch: {
     columns() {
       this.handleColumns()
+    },
+    value() {
+      this.handleColumns()
     }
   },
   methods: {
     handleClick({ row, index, column }) {
-      if (this.edittingId === `${column.key}_${index}`) {
+      const edittingId = `${column.key}_${index}`
+      // let keyIndex = this.insideData[index].edittingKeyArr ? this.insideData[index].edittingKeyArr.indexOf(columns.key) : -1
+      // let rowObj = this.insideData[index]
+      const arrPos = this.edittingIdArr.indexOf(`${column.key}_${index}`)
+      if (arrPos >= 0) {
         let tableData = clonedeep(this.value);
-        tableData[index][column.key] = this.edittingContent;
+        tableData[index][column.key] = this.edittingContent[index][column.key];
         this.$emit("input", tableData);
         this.$emit("on-edit", {
           row,
           index,
           column,
-          newValue: this.edittingContent
+          newValue: this.edittingContent[index][column.key]
         });
-        this.edittingId = "";
-        this.edittingContent = "";
+        // rowObj.edittingKeyArr.splice(keyIndex, 1)
+        this.edittingIdArr.splice(arrPos, 1)
       } else {
-        this.edittingId = `${column.key}_${index}`;
+        // rowObj.edittingKeyArr = (rowObj.edittingKeyArr) ? [...rowObj.edittingKeyArr, column.key] : [column.key]
+        // this.insideData.splice(index, 1, rowObj)
+        this.edittingIdArr.push(edittingId)
       }
     },
-    handleInput(newValue) {
-      this.edittingContent = newValue;
+    handleInput({ row, index, column }) {
+      this.edittingContent[index][column.key] = '22';
     },
     handleColumns() {
+      // this.insideData = clonedeep(this.value)
       const insideColumns = this.columns.map(item => {
         if (!item.render && item.editable) {
           item.render = (h, { row, index, column }) => {
-            const isEditting = this.edittingId === `${column.key}_${index}`;
+            // const keyArr = this.insideData[index] ? this.insideData[index].edittingKeyArr : [];
+            const isEditting = this.edittingIdArr.indexOf(`${column.key}_${index}`) >= 0;
             return (
               <div>
                 {isEditting ? (
                   <i-input
                     value={row[column.key]}
                     style="width: 50px;"
-                    on-input={this.handleInput}
+                    on-input={this.handleInput.bind(this, { row, index, column})}
                   ></i-input>
                 ) : (
                   <span>{row[column.key]}</span>
