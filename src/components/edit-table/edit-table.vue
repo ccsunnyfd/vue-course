@@ -25,7 +25,7 @@ export default {
   },
   watch: {
     columns() {
-      this.handleColumns()
+      this.handleColumns();
     }
   },
   methods: {
