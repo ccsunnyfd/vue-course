@@ -60,6 +60,17 @@ export default [
     component: () => import('@/views/menu-page.vue')
   },
   {
+    path: '/',
+    name: 'home',
+    component: Layout,
+    children: [
+      {
+        path: 'folder_tree',
+        component: () => import('@/views/folder-tree/folder-tree.vue')
+      }
+    ]
+  },
+  {
     path: '/render_page',
     name: 'render_page',
     component: () => import('@/views/render-page.vue')
