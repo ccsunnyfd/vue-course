@@ -1,7 +1,7 @@
 <template>
   <div class="folder-wrapper">
     <!-- <Tree :data="folderTree" :render="renderFunc"></Tree> -->
-    <folder-tree :folder-list="folderList" :file-list="fileList" />
+    <folder-tree :folder-list.sync="folderList" :file-list.sync="fileList" :folder-drop="folderDrop" :file-drop="fileDrop" :beforeDelete="beforeDelete" />
   </div>
 </template>
 
@@ -16,7 +16,42 @@ export default {
     return {
       folderList: [],
       fileList: [],
+      folderDrop: [
+        {
+          name: "rename",
+          title: "重命名"
+        },
+        {
+          name: "delete",
+          title: "删除文件夹"
+        }
+      ],
+      fileDrop: [
+        {
+          name: "rename",
+          title: "重命名"
+        },
+        {
+          name: "delete",
+          title: "删除文件"
+        }
+      ]
     };
+  },
+  methods: {
+    beforeDelete() {
+      return new Promise((resolve, reject) => {
+        setTimeout(() => {
+          let error = null;
+          // let error = new Error('error')
+          if (!error) {
+            resolve()
+          } else {
+            reject(error)
+          }
+        }, 2000);
+      });
+    }
   },
   mounted() {
     Promise.all([getFolderList(), getFileList()]).then(res => {
